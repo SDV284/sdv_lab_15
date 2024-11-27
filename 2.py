@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Завантаження даних
 file_path = 'comptagevelo20162.csv'  # Замініть на ваш шлях до файлу
@@ -20,3 +21,18 @@ most_popular_month_total = monthly_totals.max()
 print("Розподіл велосипедистів за місяцями:")
 print(monthly_totals)
 print(f"Найпопулярніший місяць: {most_popular_month}, із загальною кількістю проїздів: {most_popular_month_total}")
+
+plt.style.use('ggplot') 
+
+plt.rcParams['figure.figsize'] = (15, 5) 
+
+fixed_df = pd.read_csv(file_path, 
+
+                       sep=',', encoding='latin1',
+
+                       parse_dates=['Date'], dayfirst=True,
+
+                       index_col='Date')
+
+fixed_df.plot(figsize=(15, 10))
+plt.show()
